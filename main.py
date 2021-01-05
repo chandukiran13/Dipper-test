@@ -26,7 +26,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-  if message.guild == null:
+  if message.guild == "null":
     return
   if message.author == client.user:
     return
