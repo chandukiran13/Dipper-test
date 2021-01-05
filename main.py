@@ -20,14 +20,14 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
     print(member.name)
-    tmp = member.create_dm()
-    await tmp.send(None)
-    await tmp.send(
+    await member.send(
         f'Hi {member.name}, welcome to my Discord server!'
     )
 
 @client.event
 async def on_message(message):
+  if message.guild == null:
+    return
   if message.author == client.user:
     return
   msg = message.content
@@ -41,10 +41,9 @@ async def on_message(message):
   if msg == "$ping":
     lat = int(client.latency*1000)
     await message.channel.send("my latency is `"+str(lat)+"ms`")
-  if msg.startswith("$gaw"):
-    await message.channel.send("+gstart 1m 1w none Check")
   if msg.startswith('$check'):
-    e = discord.Embed(title="Hello how are you, Maybe I'm still alive",color = 250)
-    await message.channel.send(embed = e)
+    e = discord.Embed(title="Hello how are you, Maybe I'm still alive",description="[check](https://youtu.be/fn3KWM1kuAw 'Hmm what are you doing?')",color = 250)
+    await message.channel.send("Hello",embed = e)
+    del e
 keep_alive()
 client.run(os.getenv('TOKEN'))
