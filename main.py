@@ -26,9 +26,13 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-  if message.guild == "null":
-    return
   if message.author == client.user:
+    return
+  if message.guild == None:
+    embed = discord.Embed(title = "Helllo I'm Dipper",description="""If you want to invite me to your server
+    This [here](https://discord.com/api/oauth2/authorize?client_id=788758779926806588&permissions=1043521&scope=bot "This is my normal Invite link") is my normal invite link
+    This [here](https://discord.com/api/oauth2/authorize?client_id=788758779926806588&permissions=8&scope=bot "Admin link") is admin invite""",color=0x800080)
+    await message.channel.send("Invite me to a server to talk",embed=embed)
     return
   msg = message.content
   if msg == '$hello':
